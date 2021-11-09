@@ -24,17 +24,28 @@ async function cups() {
   cups = response.value
 
   const {
-    prompt
+    Input
   } = require('enquirer');
 
-  const res = await prompt({
+  const res = new Input({
     type: 'input',
     name: 'grams',
     message: '1回あたりに使うコーヒーの量を入力してください',
     initial: 'g'
   });
 
-  grams = res.grams
+  await res
+    .run()
+    .then(() => {
+      if (res.value < 10) {
+        console.log('1回に使うコーヒーの量が少なすぎます。もう一度入力してください')
+      } else if (res.value >= 80) {
+        console.log('1回に使うコーヒーの量が多すぎます。もう一度入力してください')
+      }
+    })
+    .catch(console.error)
+
+  grams = res.value
   console.log(`${grams}gですね`)
 
   amount = cups * grams
