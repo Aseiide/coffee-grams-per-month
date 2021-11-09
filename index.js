@@ -12,7 +12,6 @@ async function cups() {
   await response
     .run()
     .then(() => {
-      console.log(typeof response.value)
       if (response.value === '4') {
         console.log('コーヒーの飲みすぎはよくありませんよ！減らしましょう。')
       } else {
