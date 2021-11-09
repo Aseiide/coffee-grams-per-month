@@ -15,7 +15,6 @@ async function cups() {
     .catch(console.error)
 
   cups = response.value
-  console.log(cups)
 
   const {
     prompt
