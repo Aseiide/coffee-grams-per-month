@@ -1,13 +1,11 @@
-async function main() {
-  const {
-    Select
-  } = require('enquirer');
+async function main () {
+  const { Select } = require('enquirer')
 
   const choices = new Select({
     name: 'cups',
     message: '1日に何杯コーヒーを飲みますか?',
     choices: ['1', '2', '3', '4']
-  });
+  })
 
   await choices
     .run()
@@ -21,16 +19,14 @@ async function main() {
     })
     .catch(console.error)
 
-  const {
-    Input
-  } = require('enquirer');
+  const { Input } = require('enquirer')
 
   const res = new Input({
     type: 'input',
     name: 'grams',
     message: '1回あたりに使うコーヒーの量を入力してください',
     initial: 'g'
-  });
+  })
 
   await res
     .run()
@@ -49,12 +45,12 @@ async function main() {
 
   const {
     Confirm
-  } = require('enquirer');
+  } = require('enquirer')
 
   const prompt = new Confirm({
     name: 'question',
     message: 'コーヒーは毎日飲みますか?'
-  });
+  })
 
   await prompt
     .run()
@@ -65,14 +61,14 @@ async function main() {
         return frequency = 2
       }
     })
-    .catch(console.error);
+    .catch(console.error)
 
   amount = cups * grams * 30 / frequency
   if (grams && cups && frequency) {
     console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
   } else {
-    return
+
   }
 }
 
-main();
+main()
