@@ -28,20 +28,21 @@ async function main () {
     initial: 'g'
   })
 
+  const grams = res.value
+
   await res
     .run()
-    .then(() => {
-      if (res.value < 10) {
+    .then((grams) => {
+      if (grams < 10) {
         console.log('1回に使うコーヒーの量が少なすぎます。もう一度入力してください')
-      } else if (res.value >= 80) {
+      } else if (grams >= 80) {
         console.log('1回に使うコーヒーの量が多すぎます。もう一度入力してください')
       } else {
-        console.log(`${res.value}gですね`)
-        return res.value
+        console.log(`${grams}gですね`)
+        return grams
       }
     })
     .catch(console.error)
-  grams = res.value
 
   const {
     Confirm
