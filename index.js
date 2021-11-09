@@ -17,11 +17,10 @@ async function cups() {
         console.log('コーヒーの飲みすぎはよくありませんよ！減らしましょう。')
       } else {
         console.log(`${response.value}杯ですね`)
+        return cups = response.value
       }
     })
     .catch(console.error)
-
-  cups = response.value
 
   const {
     Input
@@ -39,18 +38,17 @@ async function cups() {
     .then(() => {
       if (res.value < 10) {
         console.log('1回に使うコーヒーの量が少なすぎます。もう一度入力してください')
-        return
       } else if (res.value >= 80) {
         console.log('1回に使うコーヒーの量が多すぎます。もう一度入力してください')
       } else {
         console.log(`${res.value}gですね`)
+        return res.value
       }
     })
     .catch(console.error)
 
-  const grams = res.value
-
-  amount = cups * grams
+  grams = res.value
+  amount = cups * grams * 30
   console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
 }
 
