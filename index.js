@@ -53,13 +53,3 @@ async function cups() {
 }
 
 cups();
-
-
-// async function calc(cups, grams) {
-//   cups();
-//   grams();
-//   amount = cups * grams
-//   await console.log(`1ヶ月に必要なコーヒーの量は${amount}gです`)
-// }
-
-// calc(cups, grams)
