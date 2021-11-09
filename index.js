@@ -3,20 +3,20 @@ async function cups() {
     Select
   } = require('enquirer');
 
-  const response = new Select({
+  const choices = new Select({
     name: 'cups',
     message: '1日に何杯コーヒーを飲みますか?',
     choices: ['1', '2', '3', '4']
   });
 
-  await response
+  await choices
     .run()
     .then(() => {
-      if (response.value === '4') {
+      if (choices.value === '4') {
         console.log('コーヒーの飲みすぎはよくありませんよ！減らしましょう。')
       } else {
-        console.log(`${response.value}杯ですね`)
-        return cups = response.value
+        console.log(`${choices.value}杯ですね`)
+        return cups = choices.value
       }
     })
     .catch(console.error)
@@ -48,7 +48,11 @@ async function cups() {
 
   grams = res.value
   amount = cups * grams * 30
-  console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
+  if (grams === true && cups === true) {
+    console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
+  } else {
+    return
+  }
 }
 
 cups();
