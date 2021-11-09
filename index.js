@@ -6,7 +6,7 @@ async function cups() {
   const response = new Select({
     name: 'cups',
     message: '1日に何杯コーヒーを飲みますか?',
-    choices: ['1', '2', '3']
+    choices: ['1', '2', '3', '4']
   });
 
   await response
