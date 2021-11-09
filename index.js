@@ -11,7 +11,14 @@ async function cups() {
 
   await response
     .run()
-    .then(answer => console.log(`${answer}杯ですね`))
+    .then(() => {
+      console.log(typeof response.value)
+      if (response.value === '4') {
+        console.log('コーヒーの飲みすぎはよくありませんよ！減らしましょう。')
+      } else {
+        console.log(`${response.value}杯ですね`)
+      }
+    })
     .catch(console.error)
 
   cups = response.value
