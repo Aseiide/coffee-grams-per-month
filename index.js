@@ -1,3 +1,24 @@
+const getNumberOfCups = (cups) => {
+  if (cups === '4') {
+    console.log('コーヒーの飲みすぎはよくありませんよ！減らしましょう。')
+    return false
+  } else {
+    return cups
+  }
+}
+
+const getWeight = (grams) => {
+  if (grams < 10) {
+    console.log('1回に使うコーヒーの量が少なすぎます。もう一度入力してください')
+    return false
+  } else if (grams >= 80) {
+    console.log('1回に使うコーヒーの量が多すぎます。もう一度入力してください')
+    return false
+  } else {
+    return grams
+  }
+}
+
 async function main () {
   const { Select } = require('enquirer')
 
@@ -9,14 +30,7 @@ async function main () {
 
   await choices
     .run()
-    .then(getNumberOfCups = (cups) => {
-      if (cups === '4') {
-        console.log('コーヒーの飲みすぎはよくありませんよ！減らしましょう。')
-        return false
-      } else {
-        return cups
-      }
-    })
+    .then(getNumberOfCups(choices.value))
     .catch(console.error)
 
   const { Input } = require('enquirer')
@@ -30,17 +44,7 @@ async function main () {
 
   await res
     .run()
-    .then(getWeight = (grams) => {
-      if (grams < 10) {
-        console.log('1回に使うコーヒーの量が少なすぎます。もう一度入力してください')
-        return false
-      } else if (grams >= 80) {
-        console.log('1回に使うコーヒーの量が多すぎます。もう一度入力してください')
-        return false
-      } else {
-        return grams
-      }
-    })
+    .then(getWeight(res.value))
     .catch(console.error)
 
   const quantity = getNumberOfCups(choices.value) // 杯数
