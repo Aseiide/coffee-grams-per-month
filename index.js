@@ -53,13 +53,17 @@ async function main () {
     message: 'コーヒーは毎日飲みますか?'
   })
 
+  const frequency = null
+  const answer = null
   await prompt
     .run()
-    .then(answer => {
+    .then(answer, frequency => {
       if (answer) {
-        return frequency = 1
+        frequency = 1
+        return frequency
       } else {
-        return frequency = 2
+        frequency = 2
+        return frequency
       }
     })
     .catch(console.error)
