@@ -69,9 +69,9 @@ async function main () {
     .catch(console.error)
 
   const amount = cups * grams * 30 / frequency
-  if (grams && cups && frequency) {
-    console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
-  }
+
+  console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
+
 }
 
 main()
