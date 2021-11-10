@@ -1,7 +1,6 @@
 const getNumberOfCups = (cups) => {
   if (cups === '4') {
     console.log('コーヒーの飲みすぎはよくありませんよ！減らしましょう。')
-    return false
   } else {
     return cups
   }
@@ -19,8 +18,10 @@ const getWeight = (grams) => {
   }
 }
 
-async function main () {
-  const { Select } = require('enquirer')
+async function main() {
+  const {
+    Select
+  } = require('enquirer')
 
   const choices = new Select({
     name: 'cups',
@@ -33,26 +34,30 @@ async function main () {
     .then(getNumberOfCups(choices.value))
     .catch(console.error)
 
-  const { Input } = require('enquirer')
+  const {
+    Input
+  } = require('enquirer')
 
-  const res = new Input({
-    type: 'input',
-    name: 'grams',
-    message: '1回あたりに使うコーヒーの量を入力してください',
-    initial: 'g'
-  })
+  if (getNumberOfCups(choices.value)) {
+    const res = new Input({
+      type: 'input',
+      name: 'grams',
+      message: '1回あたりに使うコーヒーの量を入力してください',
+      initial: 'g'
+    })
 
-  await res
-    .run()
-    .then(getWeight(res.value))
-    .catch(console.error)
+    await res
+      .run()
+      .then(getWeight(res.value))
+      .catch(console.error)
 
-  const quantity = getNumberOfCups(choices.value) // 杯数
-  const grams = getWeight(res.value) // 重さ(g)
-  const amount = quantity * grams * 30
+    const quantity = getNumberOfCups(choices.value) // 杯数
+    const grams = getWeight(res.value) // 重さ(g)
+    const amount = quantity * grams * 30
 
-  if (quantity && grams) {
-    console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
+    if (quantity && grams) {
+      console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
+    }
   }
 }
 
