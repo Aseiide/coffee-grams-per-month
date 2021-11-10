@@ -18,6 +18,16 @@ const getWeight = (grams) => {
   }
 }
 
+const getFrequency = (answer, frequency) => {
+  if (answer) {
+    frequency = 1
+    return frequency
+  } else {
+    frequency = 2
+    return frequency
+  }
+}
+
 async function main () {
   const {
     Select
@@ -51,11 +61,24 @@ async function main () {
       .then(getWeight(res.value))
       .catch(console.error)
 
+    const { Confirm } = require('enquirer')
+
+    const prompt = new Confirm({
+      name: 'question',
+      message: 'コーヒーは毎日飲みますか?'
+    })
+
+    await prompt
+      .run()
+      .then(getFrequency)
+      .catch(console.error)
+
     const quantity = getNumberOfCups(choices.value) // 杯数
     const grams = getWeight(res.value) // 重さ(g)
-    const amount = quantity * grams * 30
+    const frequency = getFrequency()
+    const amount = quantity * grams * 30 / frequency
 
-    if (quantity && grams) {
+    if (quantity && grams && frequency) {
       console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
     }
   }
