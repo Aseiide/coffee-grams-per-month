@@ -73,8 +73,8 @@ async function main () {
       .then(getFrequency)
       .catch(console.error)
 
-    const quantity = getNumberOfCups(choices.value) // 杯数
-    const grams = getWeight(res.value) // 重さ(g)
+    const quantity = getNumberOfCups(choices.value)
+    const grams = getWeight(res.value)
     const frequency = getFrequency()
     const amount = quantity * grams * 30 / frequency
 
