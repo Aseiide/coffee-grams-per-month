@@ -6,7 +6,9 @@ async function main () {
     message: '1日に何杯コーヒーを飲みますか?',
     choices: ['1', '2', '3', '4']
   })
+  
   const cups = choices.value
+
   await choices
     .run()
     .then((cups) => {
@@ -14,6 +16,7 @@ async function main () {
         console.log('コーヒーの飲みすぎはよくありませんよ！減らしましょう。')
       } else {
         console.log(`${cups}杯ですね`)
+        console.log(cups)
         return cups
       }
     })
@@ -68,6 +71,11 @@ async function main () {
     })
     .catch(console.error)
 
+
+
+  console.log(cups)
+  console.log(grams)
+  console.log(frequency)
   const amount = cups * grams * 30 / frequency
 
   console.log(`1ヶ月に必要なコーヒーの量は約${amount}gです`)
