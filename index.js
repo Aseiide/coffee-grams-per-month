@@ -18,7 +18,7 @@ const getWeight = (grams) => {
   }
 }
 
-async function main() {
+async function main () {
   const {
     Select
   } = require('enquirer')
