@@ -1,14 +1,25 @@
 {
   "name": "coffee_amount_per_month",
   "version": "1.0.1",
-  "description": "",
+  "description": "Calculate the amount of coffee you need for a month",
   "main": "index.js",
+  "bin": {
+    "coffee_amount_per_month": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aseiide/coffee-grams-per-month"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["coffee"],
+  "author": "aseiide",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aseiide/coffee-grams-per-month/issues"
+  },
+  "homepage": "https://github.com/Aseiide/coffee-grams-per-month/issues#readme",
   "dependencies": {
     "enquirer": "^2.3.6"
   },
